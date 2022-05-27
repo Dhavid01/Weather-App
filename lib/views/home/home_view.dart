@@ -46,7 +46,8 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       isLoading = true;
     });
-    forecastData = await _weatherService.getNextForecast(q: q ?? "London");
+    forecastData =
+        await _weatherService.getNextForecast(q: q ?? "Benin, Nigeria");
     setState(() {
       isLoading = false;
     });
@@ -64,14 +65,17 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
-          child: isLoading
+          child: currentData.isEmpty || forecastData.isEmpty
               ? Center(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppText.captionMedium("Fetching Weather Report"),
-                      CircularProgressIndicator()
+                      AppText.headingMeduim("Fetching Weather Report"),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const CircularProgressIndicator()
                     ],
                   ),
                 )
@@ -175,7 +179,7 @@ class _HomeViewState extends State<HomeView> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 40,
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
