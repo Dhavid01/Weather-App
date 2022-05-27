@@ -35,7 +35,8 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       isLoading = true;
     });
-    currentData = await _weatherService.getCurrentData(q: q ?? "London");
+    currentData =
+        await _weatherService.getCurrentData(q: q ?? "Benin, Nigeria");
     setState(() {
       isLoading = false;
     });
@@ -64,8 +65,15 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: Colors.transparent,
         body: SafeArea(
           child: isLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
+              ? Center(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AppText.captionMedium("Fetching Weather Report"),
+                      CircularProgressIndicator()
+                    ],
+                  ),
                 )
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -76,32 +84,31 @@ class _HomeViewState extends State<HomeView> {
                         height: 20,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              AppText.caption(
-                                DateFormat('dd, MMMM yyyy - KK:mm:ss a').format(
-                                    DateTime.fromMillisecondsSinceEpoch(
-                                        currentData["dt"] * 1000)),
-                                color: Colors.white,
-                              ),
-                              const SizedBox(height: 5),
                               Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Icon(
                                     Icons.location_on,
-                                    color: Colors.white,
+                                    color: Colors.yellow,
                                     size: 30,
                                   ),
-                                  AppText.headingMeduim(
+                                  AppText.headingRegular(
                                     currentData["name"],
                                     color: Colors.white,
                                   ),
                                 ],
-                              )
+                              ),
+                              const SizedBox(height: 5),
+                              AppText.caption(
+                                DateFormat('dd, MMMM yyyy').format(
+                                    DateTime.fromMillisecondsSinceEpoch(
+                                        currentData["dt"] * 1000)),
+                                color: Colors.white,
+                              ),
                             ],
                           ),
                           const Spacer(),

@@ -53,12 +53,6 @@ class SearchBar extends StatelessWidget {
                       Icons.close,
                       color: Colors.white,
                     )),
-                prefixIcon: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(
-                      Icons.arrow_back_ios_new,
-                      color: Colors.white,
-                    )),
                 border: InputBorder.none),
           ),
         ),
