@@ -27,7 +27,7 @@ class TodayCard extends StatelessWidget {
       ),
       margin: const EdgeInsets.only(left: 15),
       width: 120,
-      height: 200,
+      height: 220,
       child: Expanded(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
