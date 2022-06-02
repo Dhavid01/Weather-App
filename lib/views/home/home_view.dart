@@ -81,8 +81,7 @@ class _HomeViewState extends State<HomeView> {
                 )
               : Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: ListView(
                     children: [
                       const SizedBox(
                         height: 20,

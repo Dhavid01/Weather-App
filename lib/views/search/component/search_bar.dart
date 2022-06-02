@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather/services/weather_service.dart';
+// import 'package:weather/services/weather_service.dart';
 import 'package:weather/utils/color.dart';
 import 'package:weather/views/home/home_view.dart';
 
@@ -9,7 +9,7 @@ class SearchBar extends StatelessWidget {
   }) : super(key: key);
   final TextEditingController _controller = TextEditingController();
 
-  final WeatherService _service = WeatherService();
+  // final WeatherService _service = WeatherService();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,7 +20,7 @@ class SearchBar extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: kLightColor.withOpacity(0.2),
+            color: kLighterColor.withOpacity(0.2),
           ),
           margin: const EdgeInsets.all(20),
           height: 50,
